@@ -5,7 +5,20 @@ import { heroes } from "../data/heroes"
  * @param {HTMLDivElement} element 
  */
 export const promiseComponent = (element) => {
-    console.log('demo component')
+    const renderHero = (hero) => {
+        element.innerHTML = hero.name
+    }
+
+    const renderError = (error) => {
+        element.innerHTML = `<span style="color:red">Error:</span> ${error}`
+    }
+
+    const id = '5d86371f25a058e5b1c8a65e'
+
+    findHero(id)
+        // .then(hero => renderHero(hero)) -- si los parámetros son iguales se puede mandar ref de la función
+        .then(renderHero)
+        .catch(renderError)
 }
 
 /**
