@@ -4,11 +4,11 @@ import { heroes } from "../data/heroes"
  * 
  * @param {HTMLDivElement} element 
  */
-export const asyncComponent = (element) => {
+export const asyncAwaitComponent = (element) => {
 
-    const id = '5d86371fd55e2e2a30fe1ccbs'
+    const id1 = '5d86371fd55e2e2a30fe1ccbs'
 
-    findHero(id)
+    findHero(id1)
         .then(name => element.innerText = name)
         .catch(error => element.innerText = error)
 }
