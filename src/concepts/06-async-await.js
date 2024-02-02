@@ -4,13 +4,19 @@ import { heroes } from "../data/heroes"
  * 
  * @param {HTMLDivElement} element 
  */
-export const asyncAwaitComponent = (element) => {
+export const asyncAwaitComponent = async (element) => {
 
-    const id1 = '5d86371fd55e2e2a30fe1ccbs'
+    const id2 = '5d86371fd55e2e2a30fe1ccb1'
 
-    findHero(id1)
-        .then(name => element.innerText = name)
-        .catch(error => element.innerText = error)
+    try {
+        const { name: name } = await findHero(id)
+
+        element.innerHTML = name
+    }
+    catch (error) {
+        element.innerHTML = error
+    }
+
 }
 
 
@@ -23,5 +29,5 @@ const findHero = async (id) => {
     const hero = heroes.find(hero => hero.id === id)
     if (!hero) throw `Hero with id ${id} not found`
 
-    return hero.name
+    return hero
 }
